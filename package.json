@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose --detectOpenHandles --coverage"
   },
   "keywords": [],
-  "author": "",
+  "author": "Glauber Araújo",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
@@ -16,5 +17,11 @@
     "express": "^4.19.2",
     "mongoose": "^8.3.4",
     "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
