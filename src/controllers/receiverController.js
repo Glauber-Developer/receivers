@@ -6,20 +6,20 @@ exports.createReceiver = async (req, res) => {
         await newReceiver.save();
         res.status(201).json({ message: 'Recebedor criado com sucesso', receiver: newReceiver });
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao criar o recebedor', error: error.message });
+        res.status(404).json({ message: 'Erro ao criar o recebedor', error: error.message });
     }
 };
 
 exports.listReceivers = async (req, res) => {
     try {
-        const { status, nome, tipoDaChave, valorDaChave, page } = req.query;
+        const { status, receiver, pix_key_type, pix_key, page } = req.query;
         const limit = 10;
 
         const filter = {};
         if (status) filter.status = status;
-        if (nome) filter.nome = nome;
-        if (tipoDaChave) filter.tipoDaChave = tipoDaChave;
-        if (valorDaChave) filter.valorDaChave = valorDaChave;
+        if (receiver) filter.receiver = receiver;
+        if (pix_key_type) filter.pix_key_type = pix_key_type;
+        if (pix_key) filter.pix_key = pix_key;
 
         const startIndex = (page - 1) * limit;
 
