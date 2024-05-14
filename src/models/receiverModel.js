@@ -18,15 +18,15 @@ const receiverSchema = new mongoose.Schema({
         validate: {
             validator: function (value) {
                 if (this.pix_key_type === 'CPF') {
-                    return /^[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}$/.test(value);
+                    return /^[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}$/;
                 } else if (this.pix_key_type === 'CNPJ') {
-                    return /^[0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2}$/.test(value);
+                    return /^[0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2}$/;
                 } else if (this.pix_key_type === 'EMAIL') {
-                    return /^[a-z0-9+_.-]+@[a-z0-9.-]+$/.test(value);
+                    return /^[a-z0-9+_.-]+@[a-z0-9.-]+$/;
                 } else if (this.pix_key_type === 'TELEFONE') {
-                    return /^((?:\+?55)?)([1-9][0-9])(9[0-9]{8})$/.test(value);
+                    return /^((?:\+?55)?)([1-9][0-9])(9[0-9]{8})$/;
                 } else if (this.pix_key_type === 'CHAVE_ALEATORIA') {
-                    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+                    return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
                 } else {
                     return false;
                 }
@@ -44,13 +44,13 @@ const receiverSchema = new mongoose.Schema({
         type: String,
         maxLength: 140,
         required: false,
-        math: /^[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}$/i,
+        match: /^[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}$/,
     },
     cnpj: {
         type: String,
         maxLength: 140,
         required: false,
-        math: /^[0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2}$/i
+        match: /^[0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2}$/
     },
     status: { type: String, default: 'Rascunho' }
 });
