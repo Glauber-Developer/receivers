@@ -4,6 +4,7 @@ const receiverController = require('../controllers/receiverController');
 
 router.post('/', receiverController.createReceiver);
 router.get('/', receiverController.listReceivers);
+router.get('/:id', receiverController.listReceiver);
 router.put('/:id', receiverController.updateReceiver);
 router.delete('/', receiverController.deleteReceivers);
 
