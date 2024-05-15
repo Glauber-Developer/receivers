@@ -1,12 +1,11 @@
-const Receiver = require('../models/receiverModel');
+const receiverService = require('../services/receiverService');
 
 exports.createReceiver = async (req, res) => {
     try {
-        const newReceiver = new Receiver(req.body);
-        await newReceiver.save();
+        const newReceiver = await receiverService.createReceiver(req.body);
         res.status(201).json({ message: 'Recebedor criado com sucesso', receiver: newReceiver });
     } catch (error) {
-        res.status(404).json({ message: 'Erro ao criar o recebedor', error: error.message });
+        res.status(404).json({ message: error.message });
     }
 };
 
@@ -21,47 +20,59 @@ exports.listReceivers = async (req, res) => {
         if (pix_key_type) filter.pix_key_type = pix_key_type;
         if (pix_key) filter.pix_key = pix_key;
 
-        const startIndex = (page - 1) * limit;
-
-        const receivers = await Receiver.find(filter)
-            .limit(limit)
-            .skip(startIndex)
-            .exec();
-
+        const receivers = await receiverService.listReceivers(filter, page, limit);
         res.status(200).json(receivers);
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao listar os recebedores', error: error.message });
+        res.status(500).json({ message: error.message });
     }
 };
 
+exports.listReceiver = async (req, res) => {
+    try {
+        const receiverId = req.params.id;
+        const receiver = await receiverService.listReceiver(receiverId);
+
+        if (!receiver) {
+            return res.status(404).json({ message: 'Receptor não encontrado' });
+        }
+
+        res.status(200).json(receiver);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 exports.updateReceiver = async (req, res) => {
     try {
         const { id } = req.params;
-        const { status } = req.body;
-        let updateData = req.body;
+        const { status, email, ...updateData } = req.body;
 
         if (status === 'validado') {
-            delete updateData.pix_key_type;
-            delete updateData.pix_key;
+            const updatedReceiver = await receiverService.updateReceiver(id, { email });
+            if (!updatedReceiver) {
+                return res.status(404).json({ message: 'Recebedor não encontrado' });
+            }
+            return res.status(200).json({ message: 'Recebedor atualizado com sucesso', receiver: updatedReceiver });
+        } else if (status === 'rascunho') {
+            const { email } = req.body;
+            const updatedReceiver = await receiverService.updateReceiver(id, { email, ...updateData} );
+            if (!updatedReceiver) {
+                return res.status(404).json({ message: 'Recebedor não encontrado' });
+            }
+            return res.status(200).json({ message: 'Recebedor atualizado com sucesso', receiver: updatedReceiver });
+        } else {
+            return res.status(400).json({ message: 'O status do recebedor não pode ser alterado' });
         }
-
-        const updatedReceiver = await Receiver.findByIdAndUpdate(id, updateData, { new: true });
-        if (!updatedReceiver) {
-            return res.status(404).json({ message: 'Recebedor não encontrado' });
-        }
-
-        res.status(200).json({ message: 'Recebedor atualizado com sucesso', receiver: updatedReceiver });
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao atualizar o recebedor', error: error.message });
+        res.status(400).json({ message: error.message });
     }
 };
 
 exports.deleteReceivers = async (req, res) => {
     try {
         const { ids } = req.body;
-        const result = await Receiver.deleteMany({ _id: { $in: ids } });
+        const result = await receiverService.deleteReceivers(ids);
         res.status(200).json({ message: 'Recebedor(es) excluído(s) com sucesso', result });
     } catch (error) {
-        res.status(400).json({ message: 'Erro ao excluir o(s) recebedor(es)', error: error.message });
+        res.status(400).json({ message: error.message });
     }
 };
