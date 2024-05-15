@@ -4,7 +4,7 @@ const receiverSchema = new mongoose.Schema({
     receiver: {
         type: String,
         maxLength: 250,
-        required: false,
+        required: true,
     },
     pix_key_type: {
         type: String,
