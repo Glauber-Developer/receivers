@@ -25,7 +25,7 @@
 # Abrir Projeto
     
 
-<b>Copie para clonar o repositório</b>
+## Copie para clonar o repositório
 
 <h4 align="center">
 
@@ -33,34 +33,48 @@
       git clone https://github.com/HulkFront/receivers.git
 </h4>
 
-<h4>
-<b>Copie para abrir a pasta</b>
+
+## Copie para abrir a pasta
   
 <h4 align="center">
 
         cd receivers
 </h4>
-<b>Copie para instalar as dependências</b>
+
+## Copie para instalar as dependências
 
 <h4 align="center">
 
 
         npm install
 </h4>
-<b>Copie para rodar o backend</b>
+
+## Criar .env na raiz do projeto conforme abaixo
+
+<div align="center">
+    <br/>
+    
+![image](https://github.com/HulkFront/receivers/assets/62362001/a27f09cd-b845-4881-b4af-c9b3d70d1161)
+![image](https://github.com/HulkFront/receivers/assets/62362001/26f73420-5d4f-42d5-b47d-c5feb8bfe5b3)
+</div>
+
+
+## Copie para rodar o backend
 
 <h4 align="center">
 
 
         npm run dev
 </h4>
-<b>Copie para acessar os dados no insomnia ou no browser</b>
+
+## Copie para acessar os dados no insomnia ou no browser
 <h4 align="center">
 
 
         localhost:3000/api/receivers
 </h4>
-<b>Copie para rodar os testes</b>
+
+## Copie para rodar os testes
 
 <h4 align="center">
 
@@ -68,9 +82,37 @@
         npm test
 </h4>
 
-![image](https://github.com/HulkFront/receivers/assets/62362001/a27f09cd-b845-4881-b4af-c9b3d70d1161)
 
 
+# Insomnia
 
+## GET
+<div align="center">
+    
+![image](https://github.com/HulkFront/receivers/assets/62362001/00d8fb34-e4db-4647-9fcc-f381b3d14d6e)
+![image](https://github.com/HulkFront/receivers/assets/62362001/11b5bbe2-4dab-41b5-83d3-51e3b82f5679)
+![image](https://github.com/HulkFront/receivers/assets/62362001/7674e739-8460-4990-8096-816883c9a71b)
+![image](https://github.com/HulkFront/receivers/assets/62362001/f44eb2ea-00b0-4535-87f6-26155bd410c9)
+![image](https://github.com/HulkFront/receivers/assets/62362001/142fb536-e66c-44e9-8684-e3f8e77e8783)
+![image](https://github.com/HulkFront/receivers/assets/62362001/188b5cd1-ec49-44c5-a8b0-50fc90085a0c)
+</div>
 
+## POST
+<div align="center">
 
+![image](https://github.com/HulkFront/receivers/assets/62362001/d806cf09-05fc-41fb-a942-be9d1131d18d)
+</div>
+
+## PUT
+<div align="center">
+
+![image](https://github.com/HulkFront/receivers/assets/62362001/df91cb30-b969-482c-a12a-8e58235c3277)
+</div>
+
+## DELETE
+<div align="center">
+
+![image](https://github.com/HulkFront/receivers/assets/62362001/e5a09664-5fb9-4d26-8b77-640b4c862d2c)
+</div>
+
+<h3 align="center">...::::HulkFront::::...</h3>
