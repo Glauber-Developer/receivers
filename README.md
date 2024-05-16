@@ -115,4 +115,9 @@
 ![image](https://github.com/HulkFront/receivers/assets/62362001/e5a09664-5fb9-4d26-8b77-640b4c862d2c)
 </div>
 
+## MongoDB
+
+![image](https://github.com/HulkFront/receivers/assets/62362001/8e2e3f0a-0e80-4682-a8be-645e5915a214)
+
+
 <h3 align="center">...::::HulkFront::::...</h3>
