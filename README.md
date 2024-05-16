@@ -68,7 +68,8 @@
         npm test
 </h4>
 
-![image](https://github.com/HulkFront/receivers/assets/62362001/6ade2c66-9f24-4e43-9050-72ee7f8deeb0)
+![image](https://github.com/HulkFront/receivers/assets/62362001/a27f09cd-b845-4881-b4af-c9b3d70d1161)
+
 
 
 
